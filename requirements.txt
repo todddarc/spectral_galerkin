@@ -1,0 +1,1 @@
+numpy scipy pyfftw petsc petsc4py mpi4py matplotlib h5py sympy pytest black ruff
