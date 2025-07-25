@@ -1,0 +1,26 @@
+image:
+  file: Dockerfile
+
+tasks:
+  - name: Install dev tools
+    command: |
+      pre-commit install
+      pytest -q
+
+  - name: Start Jupyter
+    command: |
+      tmux new-session -d -s jupyter \
+        "jupyter lab --ip=0.0.0.0 --no-browser --allow-root"
+      echo "Jupyter is running on port 8888"
+
+ports:
+  - port: 8888
+    onOpen: open-preview
+
+vscode:
+  extensions:
+    - ms-python.python
+    - ms-vscode.cpptools
+    - ms-azuretools.vscode-docker
+    - sjurba.gitleaks
+    - eamodio.gitlens
